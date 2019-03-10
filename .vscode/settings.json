@@ -1,0 +1,112 @@
+{
+	"javascript.validate.enable": false, //关闭自身的验证
+	// eslint的一些配置，最好不要配置在这里，
+	// 而是直接配置在工作区的配置文件（.eslintrc.js或者yml文件，或者json文件）中
+	// 这三种文件，js我最喜欢，json编辑器最喜欢，yml任何语言通用。
+	// "eslint.options": {
+	//     "globals": [
+	//         "window",
+	//         "alert"
+	//     ]
+	// },
+	// eslint需要编辑器安装对应
+	// 的插件，配置可以卸载这里，也可以写在项目中
+	"eslint.autoFixOnSave": true,
+	// //上面是eslint的配置
+	// 下面是打开standard的自己保存修复，已经成为历史啦。
+	// "standard.autoFixOnSave": true,
+	"git.enableSmartCommit": true,
+	"window.zoomLevel": 0,
+	"editor.tabSize": 2,
+	"files.associations": {
+		"*.js": "javascriptreact"
+		// "*.css": "postcss"
+		// "*.css": "scss"
+	},
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"gitlens.advanced.messages": {
+		"suppressFileNotUnderSourceControlWarning": true,
+		"suppressShowKeyBindingsNotice": true,
+		"suppressWelcomeNotice": true
+	},
+	"git.autofetch": true,
+	"git.confirmSync": false,
+	"workbench.statusBar.visible": true,
+	"diffEditor.ignoreTrimWhitespace": true,
+	"gitlens.keymap": "alternate",
+	"workbench.iconTheme": "vscode-icons",
+	"git.ignoreLegacyWarning": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"editor.formatOnPaste": true,
+	"gitlens.views.fileHistory.enabled": true,
+	"gitlens.views.lineHistory.enabled": true,
+	"gitlens.menus": {
+		"editor": {
+			"blame": false,
+			"clipboard": true,
+			"compare": true,
+			"details": true,
+			"history": false,
+			"remote": true
+		},
+		"editorGroup": {
+			"blame": true,
+			"compare": true,
+			"history": false,
+			"remote": false
+		},
+		"explorer": {
+			"compare": true,
+			"history": true,
+			"remote": true
+		}
+	},
+	"gitlens.views.repositories.files.layout": "list",
+	"vsicons.dontShowNewVersionMessage": true,
+	"css.lint.unknownVendorSpecificProperties": "warning",
+	"less.lint.unknownVendorSpecificProperties": "warning",
+	"scss.lint.unknownVendorSpecificProperties": "warning",
+	"scss.lint.validProperties": ["composes"],
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"postcss.validate": false,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"prettier.trailingComma": "all",
+	// An array of language ids which should be validated by ESLint
+	"eslint.validate": [
+		"javascript",
+
+		// jsx
+		"javascriptreact"
+
+		// vue
+		// {
+		//   "language": "vue",
+		//   "autoFix": true
+		// },
+
+		// // ts
+		// {
+		//   "language": "typescript",
+		//   "autoFix": true
+		// },
+
+		// // tsx
+		// {
+		//   "language": "typescriptreact",
+		//   "autoFix": true
+		// },
+	],
+	"eslint.alwaysShowStatus": true,
+  "tslint.autoFixOnSave": true,
+  
+  // "editor.fontFamily": "Fira Code",
+  // "editor.fontFamily": "FiraCode-Retina",
+	// "editor.fontLigatures": true,
+	// "editor.fontWeight": "300", // Light
+	// "editor.fontWeight": "400", // Regular
+	// "editor.fontWeight": "500", // Medium
+	// "editor.fontWeight": "600" // Bold
+}

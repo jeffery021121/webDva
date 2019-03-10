@@ -1,0 +1,17 @@
+#* 表示忽略所有该类型的文件，一行是一个规则，同.gitignore
+*.js
+*.jsx
+*.ts
+*.tsx
+dist
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# misc
+.DS_Store
+npm-debug.log*
