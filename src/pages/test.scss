@@ -1,0 +1,46 @@
+/* 编辑器弊端，无法支持postcss文件格式化，对postcss的语法支持的不够，postcss的mixin报错 */
+
+/* 编辑器的弊端可以通过可配置插件来解决，但是precss的语法应该是真的没有必要坚持了，
+因为它相比传统三强差太多了，要不然就只是使用未来已经确定支持的css写法，可是这些写发其他预处理器也是支持的 */
+
+/* 废弃啦，postcss主要还是用来配置插件吧，它平台上一些独特的语法就不用啦 */
+
+/* $backGround:blue; */
+
+/* 未来语法，css变量，定义在：root对象中，用--开头 */
+
+:root {
+	--body_bg_color: black;
+}
+
+.textBox {
+	background: var(--body_bg_color);
+	position: relative;
+
+	/* color: $backGround; */
+}
+
+/* for循环和计算属性 */
+
+.ulist {
+	@for $i from 1 to 3 {
+		/* 这个for循环必须要配置precss才行了，上面的变量和嵌套其实不用配置 */
+
+		li:nth-of-type(#{$i}) {
+			/* 这样计算的话，会使用浏览区的计算属性，如果没有后面的减法，那么会是计算的百分比值，就没有了兼容性问题 */
+			margin-left: calc((100% / #{$i}) - 50px);
+		}
+	}
+}
+
+/* each 循环，编辑器支持的不够好,可以通过styleint自由配置啊 */
+
+/* $social: yellow,
+  pink,
+  blue;
+
+@each $icon in ($social) {
+  .li_$(icon) {
+    background: $icon;
+  }
+} */

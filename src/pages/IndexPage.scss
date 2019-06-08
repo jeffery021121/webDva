@@ -1,0 +1,250 @@
+/* 定义变量,后面的分号一定不能少 */
+
+$blue: #056ef0;
+$column: 200px;
+$yellow: yellow;
+$column_layout: 2;
+$pink: pink;
+$black: black;
+$red: red;
+
+@mixin background($color: purple) {
+	background: $color;
+}
+
+:root {
+	--body_bg_color: black;
+}
+
+/* precss教学： https://www.w3cplus.com/PostCSS/postcss-deep-dive-preprocessing-with-precss.html */
+
+/* 还是没有办法消除composes的警告，可以使用其他的方式试试 */
+
+/* cssModule */
+
+:global(.normal) {
+	background: $blue;
+}
+
+/* 两种cssModule的scope写法 */
+
+// :local(.classNmae) {
+//   /* background: blue */
+//   // @extend rounded_button
+// }
+.cc {
+	background-origin: padding-box;
+	display: flex !important;
+
+	/* 会默认添加prefixer */
+}
+
+/* 使用compose，但是会警告，因为这个vscode 的 postcss包不认识composes这个属性，
+可以配置为不提示，打开配置项，搜索postcss就可以了，
+直接越过postcss检测，不过弊大于利 */
+
+/* local嵌套 */
+
+.aa {
+	composes: global(normal);
+	display: flex;
+
+	/* color: $blue;  */
+
+	&::before {
+		color: $pink;
+		content: '&操作符添加的伪元素';
+
+		/* display: block; */
+	}
+
+	span {
+		color: red;
+	}
+
+	/* @if,@else的用法，和scss相同 */
+	:global(.title) {
+		color: $black;
+
+		@if $column_layout==2 {
+			background: $yellow;
+			width: 100%;
+		} @else {
+			float: left;
+			width: 50%;
+		}
+	}
+}
+
+/* 循环嵌套以外，两者class名相同，权重覆盖 */
+
+.mainBox :global(.title) {
+	background: pink;
+	height: 10px;
+	position: relative;
+	width: 10px;
+
+	@if $column_layout==2 {
+		color: $black;
+		display: inline;
+		left: 39px;
+		position: relative;
+		top: 12px;
+		width: 50%;
+
+		@include background(pink);
+	} @else {
+		width: 100%;
+	}
+}
+
+/* @each循环，变量拼接：li_$(varName)===li_yellow ,但是这个编辑器现在还是不太支持，所以到底是用postcss的precss还是scss,我不太确定了。。。
+scss文件，插件可以自动格式化，
+但是postcss文件类型没有这种插件，
+而且，同样的postcss语法，那个插件也不能支持,目前没有找到可以支持的插件
+ */
+
+// $social: yellow,
+// pink,
+// blue;
+// @each $icon in ($social) {
+//   .li_$(icon) {
+//     background: $icon;
+//   }
+// }
+
+/* @define-mixin icon $network, $color {
+    .button.$(network) {
+        background-image: url('img/$(network).png');
+        background-color: $color;
+    }
+}
+
+@mixin icon twitter, blue;
+
+@mixin icon youtube, red; */
+
+// 上面其实都是precss的语法，这个，我应该是有东西搞错了，下面先看scss吧，它强大之处是能够支持宏，
+// 当然precss也能，而且比scss貌似做的还好，不过没有找到合适的插件，vscode插件也不太合适
+// 其实上面是未注释的就是scss和precss公用的属性啦
+
+/* scss开始************************************************************************************************************** */
+
+//两者定义变量是相同的
+$aaa: '是的,我是scss定义的变量';
+
+.scssTest1 {
+	&::before {
+		content: $aaa;
+	}
+
+	div {
+		display: inline;
+
+		a {
+			color: purple;
+
+			p {
+				display: inline-block;
+
+				// span {
+				//   color: red;
+
+				//   span {
+				//     display: inline;
+
+				//     a {
+				//       color: pink;
+				// }
+				// }
+				// }
+			}
+		}
+	}
+}
+
+// 宏使用
+@mixin border-radius($radius) {
+	//有点像是函数，定义变量，传递变量
+	-ms-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin content_test($content) {
+	//有点像是函数，定义变量，传递变量
+	&::after {
+		//这种需求写函数最好了。。。。。
+		@if $content {
+			content: $content;
+
+			@include background(pink);
+		} @else {
+			content: '我是伪元素after';
+		}
+	}
+}
+
+// @function testContent($n) {
+//   @return $n * $grid-width+($n - 1) * $gutter-width;
+// }
+.box {
+	border: 5px solid $red; //也是支持composes的，也就是可以直接再来一个class名，这里的composes并不是scss支持，而是scss没有处理，给了postcss-loader处理的。
+	// composes: scssTest1;
+	// scss 自己的compose可以使用@extend .CLASSNAME来实现
+	@extend .scssTest1; //上面两条语句作用是一样的，都是把两一个class的属性拿了过来
+
+	@include border-radius(
+		$radius: 10px
+	); //如果不需要传递参数，就不要后面的括号,传递参数的时候可以写上变量的名字，也可以不写，不写看下例
+
+	@include content_test('我才是');
+	@include background;
+}
+
+/* scss继承测试  */
+%extendTest {
+	content: 'scss继承尝试 #{$blue}'; //变量拼接
+}
+
+.extendBox {
+	&::after {
+		@extend %extendTest;
+	}
+}
+
+$social: yellow, pink, blue;
+
+/* each 循环  注意和precss不太一样和插值语句 */
+
+@each $icon in ($social) {
+	.li_#{$icon} {
+		background: var(--body_bg_color);
+		color: $icon;
+		width: 100px;
+		z-index: 10;
+	}
+}
+
+// for循环
+.ulist {
+	@for $i from 1 to 3 {
+		li:nth-of-type(#{$i}) {
+			margin-left: calc((100% / #{$i}) - 50px);
+		}
+	}
+}
+
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+	@return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar {
+	border: 1px solid red;
+	position: relative;
+	width: grid-width(5);
+}

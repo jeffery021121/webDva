@@ -1,0 +1,32 @@
+{
+	"defaultSeverity": "error", //总的来说，感觉这一套配置不如腾讯那个tslint-config-alloy好
+	"extends": [
+		"tslint:latest", //这个的确管的挺多。。。
+		"tslint-react",
+		"tslint-eslint-rules",
+		"tslint-config-alloy",
+		"tslint-config-prettier"
+	],
+	"linterOptions": {
+		"exclude": ["**/node_modules/**"]
+	},
+	"rules": {
+		"trailing-comma": [
+			true,
+			{
+				"multiline": {
+					"singleline": "never",
+					"objects": "always",
+					"arrays": "always",
+					"functions": "always",
+					"typeLiterals": "ignore"
+				},
+				"esSpecCompliant": true
+			}
+		],
+		"no-implicit-dependencies": [false],
+		"type-literal-delimiter": false,
+		"no-magic-numbers":false
+		//
+	}
+}

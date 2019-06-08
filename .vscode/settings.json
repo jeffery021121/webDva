@@ -100,7 +100,8 @@
 		// },
 	],
 	"eslint.alwaysShowStatus": true,
-  "tslint.autoFixOnSave": true,
+	"tslint.autoFixOnSave": true,
+	
   
   // "editor.fontFamily": "Fira Code",
   // "editor.fontFamily": "FiraCode-Retina",

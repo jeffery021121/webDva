@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"module": "ESNext", // 使用 最新的es模块 模块
+		"target": "ESNEXT", // 编译成 ESNEXT 最新的es版本 (Babel 将做剩下的事情) 注意的是，上下这两个写法不是完全一样的
+		"allowSyntheticDefaultImports": true, // 允许使用import引入default导出的模块
+		"sourceMap": true, // 使 TypeScript 生成 sourcemaps
+		// "outDir": "ts-build", // 构建输出目录 (因为我们大部分时间都在使用 Webpack，所以不太相关)
+		"jsx": "preserve", // 开启 JSX 模式, 但是 "preserve" 告诉 TypeScript 不要转换它(我们将使用 Babel)这就要求我们在处理tsx?文件的时候使用tsloader和babelloader
+		"strict": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+		// "allowJs": true,
+	},
+	"exclude": [
+		"node_modules" // 这个目录下的代码不会被 typescript 处理
+	]
+}

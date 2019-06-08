@@ -1,0 +1,14 @@
+/* 如果使用css文件，那么stylelint-webpack-plugin和ts的css声明插件有冲突，导致autofix失效，所以建议使用scss或者less */
+.add {
+  background: red;
+}
+
+.abc {
+  color: blue;
+}
+
+/* 这个delete因为是js的关键字，所以在d.ts的声明文件中是不允许暴露的，所以不被声明 */
+.deleteBtn {
+  background: yellow;
+  position: relative;
+}

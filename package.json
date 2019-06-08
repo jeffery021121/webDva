@@ -6,8 +6,7 @@
 	"scripts": {
 		"build": "webpack --colors --progress --inline --mode production --config config/webpack.prod.config.js",
 		"buildAnalyze": "webpack --colors --progress --inline --mode production --config config/webpack.analyze.config.js",
-		"devMac": "export NODE_ENV=developLocal && webpack-dev-server --colors --progress --inline --config config/webpack.dev.config.js",
-		"devWindow": "set NODE_ENV=developLocal && webpack-dev-server --colors --progress --inline --config config/webpack.dev.config.js",
+		"dev": "NODE_ENV=developLocal && webpack-dev-server --colors --progress --inline --config config/webpack.dev.config.js",
 		"dll": "webpack -p --config config/webpack.dll.config.js --progress --profile --colors",
 		"start": "webpack-dev-server --colors --progress --inline --config config/webpack.dev.config.js",
 		"test": "jest --config jest.config.js --verbose=false --no-cache --coverage",
@@ -99,8 +98,9 @@
 		"webpack-merge": "^4.1.5"
 	},
 	"dependencies": {
-		"antd": "^3.12.3",
 		"@babel/runtime": "^7.2.0",
+		"antd": "^3.12.3",
+		"async-validator": "^1.11.0",
 		"dva": "^2.4.1",
 		"dva-immer": "^0.2.4",
 		"dva-loading": "^2.0.6",
