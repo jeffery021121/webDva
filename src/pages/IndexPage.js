@@ -10,6 +10,7 @@ function IndexPage(props) {
 	const { example } = props
 	const arrList = arr.map((item) => <li key={`${item}`}>{item}</li>)
 	const { time, obj } = example
+	console.log('测试提交')
 	return (
 		<div className={style.mainBox}>
 			<Link to="/vali">表单验证组件页面</Link>

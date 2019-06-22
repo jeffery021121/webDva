@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 // import Validator from '@/utils/vali4'
 // import React, { Component } from 'react'
 

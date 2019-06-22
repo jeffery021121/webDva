@@ -42,7 +42,7 @@ module.exports = {
 		// prettier 的错误直接报错
 		'prettier/prettier': 'error',
 
-		'linebreak-style': ['error', 'unix'],
+		'linebreak-style': 0,
 		'quotes': ['error', 'single'],
 		'semi': ['error', 'never'],
 		// 禁止缩进错误
