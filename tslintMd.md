@@ -1,4 +1,4 @@
-#ts 错误的设置了类型，最为致命
+#ts 错误的设置了类型，最为致命1
 #ts 工具讲解和实现 https://zhuanlan.zhihu.com/p/40311981 #跟着打一遍 https://segmentfault.com/a/1190000015326439 #一个 tslint 的配置
 tslint中没有警告，只有对和不对。。。
 rulesDirectory 指定规则的实现目录，可以配置多个
