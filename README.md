@@ -19,4 +19,4 @@
 #### 项目提交
 
 1. 全局安装 git 命令行提示工具 commitizen. npm install -g commitizen
-2. git commit 规范按照 commitizen 来，一开始不熟练，可以直接将 git commit 替换为 git cz，按照提示选择和输入即可
+2. git commit 规范按照 commitizen 来，一开始不熟练，可以直接将 git commit 替换为 git cz，按照提示选择和输入即可123
